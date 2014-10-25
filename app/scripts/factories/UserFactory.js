@@ -1,26 +1,27 @@
 'use strict';
 
 /* @ngInject */
-function VehicleFactory($firebase) {
-    var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
-    var vehicles = $firebase(vehiclesRef).$asArray();
-
-    var api = {
-        getVehicle: function (id) {
-            return vehicles.$get(id);
-        },
-        addVehicle: function (vehicle) {
-            vehicles.$add(vehicle);
-        },
-        saveVehicle: function (vehicle) {
-            vehicles.$save(vehicle.id);
-        },
-        removeVehicle: function (vehicle) {
-            vehicles.$remove(vehicle.id);
+function UserFactory($firebase) {
+    var curentUser = null;
+    var ref = new Firebase("https://hacky-races.firebaseio.com");
+    ref.onAuth(function (authData) {
+        if (authData) {
+            var userData = ref.child('users').child(authData.uid);
+            if (!userData.child('uid')) {
+                userData.set(authData);
+            }
+            // save the user's profile into Firebase so we can
+            // list users, use them in security rules, and show profiles
+            ref.child('users').child(authData.uid).set(authData);
         }
-    };
-    return api;
+        curentUser = authData;
+    });
+    return {
+        getCurrentUser: function () {
+            return curentUser;
+        }
+    }
 }
 
 angular.module('hackyRacesApp')
-    .factory('VehicleFactory', VehicleFactory);
+    .factory('UserFactory', UserFactory);
