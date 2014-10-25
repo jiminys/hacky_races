@@ -1,47 +1,24 @@
 'use strict';
 
 /* @ngInject */
-function VehicleFactory() { //$firebase){
-    var vehicles = {
-        1: {
-            'name': 'Micahs Mega Falafel',
-            'status': '20',
-            'stat1' : 'stat1',
-            'stat2' : 'stat2',
-            'stat3' : 'stat3',
-            'description' : 'description',
-            'level' : '1',
-            'resources': [
+function VehicleFactory($firebase, $q) {
 
-            ]
-        },
-        2: {
-            'name': 'Falafel King',
-            'status': '30',
-            'stat1' : 'stat1',
-            'stat2' : 'stat2',
-            'stat3' : 'stat3',
-            'description' : 'description',
-            'level' : '1',
-            'resources': [
+    var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
+    var vehicles = $firebase(vehiclesRef).$asArray();
 
-            ]
-        }
-    };
-    // var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
-    // var vehicles = $firebase(vehiclesRef);
     var api = {
-        getVehicle: function(id) {
-            return vehicles[id];
+        getVehicle: function (id) {
+            return vehicles.$getRecord(id);
         },
-        addVehicle: function(vehicle) {
-            vehicles[vehicle.id] = vehicle;
+        addVehicle: function (vehicle) {
+            var deferred = $q.defer();
+            vehicles.$add(vehicle).then(function (ref) {
+                deferred.resolve(vehicles.$getRecord(ref.name()));
+            });
+            return deferred.promise;
         },
-        saveVehicle: function(vehicle) {
-            vehicles[vehicle.id] = vehicle;
-        },
-        removeVehicle: function(vehicle) {
-            delete vehicles[vehicle.id];
+        removeVehicle: function (vehicle) {
+            vehicles.$remove(vehicle.id);
         }
     };
     return api;

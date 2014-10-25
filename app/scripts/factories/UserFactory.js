@@ -1,27 +1,29 @@
 'use strict';
 
 /* @ngInject */
-function UserFactory($firebase) {
-    var curentUser = null;
-    var ref = new Firebase("https://hacky-races.firebaseio.com");
-    ref.onAuth(function (authData) {
-        if (authData) {
-            var userData = ref.child('users').child(authData.uid);
-            if (!userData.child('uid')) {
-                userData.set(authData);
-            }
-            // save the user's profile into Firebase so we can
-            // list users, use them in security rules, and show profiles
-            ref.child('users').child(authData.uid).set(authData);
-        }
-        curentUser = authData;
+function UserFactory($firebaseSimpleLogin, FBURL) {
+    var fb = new Firebase(FBURL);
+    var ref = $firebaseSimpleLogin(fb);
+    ref.$getCurrentUser().then(function (user) {
+        fb.child('users').child(user.uid).set(user);
     });
-    return {
-        getCurrentUser: function () {
-            return curentUser;
-        }
-    }
+    return {};
 }
 
 angular.module('hackyRacesApp')
     .factory('UserFactory', UserFactory);
+
+// // let's create a re-usable factory that generates the $firebaseSimpleLogin instance
+// app.factory("simpleLogin", ["$firebaseSimpleLogin",
+//     function ($firebaseSimpleLogin) {
+//         var ref = new Firebase("https://<your-firebase>.firebaseio.com/");
+//         return $firebaseSimpleLogin(ref);
+//     }
+// ]);
+
+// // and use it in our controller
+// app.controller("SampleCtrl", ["$scope", "simpleLogin",
+//     function ($scope, simpleLogin) {
+//         $scope.auth = simpleLogin;
+//     }
+// ])
