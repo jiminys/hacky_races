@@ -1,4 +1,6 @@
-<!-- wait for auth to resolve (avoid flashing login page before redirect -->
+<div layout="vertical" class="ng-scope'" ng-cloak >
+  <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
+    <p>
 <div ng-cloak class="row">
     <div class="col-md-12">
 
@@ -14,7 +16,7 @@
             </p>
         </fieldset>
 
-        
+
         <p>&nbsp;</p>
         <form role="form">
             <fielset>
@@ -45,10 +47,13 @@
                 </div>
             </fielset>
         </form>
-        
+
 
         <br />
         <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
 
     </div>
+</div>    </p>
+  </md-content>
 </div>
+<!-- wait for auth to resolve (avoid flashing login page before redirect -->

@@ -21,7 +21,7 @@
     <!--[if lt IE 9]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <md-sidenav layout="vertical" class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope" tabindex="-1" is-locked-open="$media('md')">
+    <md-sidenav layout="vertical" class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope" component-id="mainNav" tabindex="-1" is-locked-open="$media('md')">
     <md-toolbar class="md-theme-light md-medium-tall">
     <h1 class="md-toolbar-tools">
     <a href="#/" tabindex="0">hacky races</a>
@@ -29,8 +29,8 @@
     </md-toolbar>
     </md-sidenav>
     <div layout="vertical" layout-fill="" tabindex="-1" role="main">
-      <md-toolbar class="md-theme-dark md-medium-tall app-toolbar">
-      <div class="md-toolbar-tools" ng-click="openMenu()" tabindex="0">
+      <md-toolbar class="md-theme-dark md-medium-tall app-toolbar" ng-controller="NavController">
+      <div class="md-toolbar-tools" ng-click="toggleMenu()" tabindex="0">
         <button class="menu-icon" hide-md="" aria-label="Toggle Menu">
         <md-icon icon="img/icons/ic_menu_24px.svg"><object class="md-icon" data="img/icons/ic_menu_24px.svg"></object></md-icon>
         </button>
@@ -70,6 +70,7 @@
     <script src="scripts/angularfire/simpleLoginTools.js"></script>
     <script src="scripts/angularfire/routesecurity.js"></script>
     <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/NavController.js"></script>
     <!-- endbuild -->
   </body>
 </html>
