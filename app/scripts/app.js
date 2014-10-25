@@ -24,6 +24,46 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
+    .when('/quiz-easy', {
+      authRequired: false,
+      templateUrl: 'views/quiz-easy.html',
+      controller: 'QuizEasyCtrl'
+    })
+    .when('/quiz-medium', {
+      authRequired: false,
+      templateUrl: 'views/quiz-medium.html',
+      controller: 'QuizMediumCtrl'
+    })
+    .when('/quiz-hard', {
+      authRequired: false,
+      templateUrl: 'views/quiz-hard.html',
+      controller: 'QuizHardCtrl'
+    })
+    .when('/quiz-hard-lobby', {
+      authRequired: false,
+      templateUrl: 'views/quiz-hard-lobby.html',
+      controller: 'QuizHardLobbyCtrl'
+    })
+    .when('/resource', {
+      authRequired: false,
+      templateUrl: 'views/resource.html',
+      controller: 'ResourceCtrl'
+    })
+    .when('/resource-fail', {
+      authRequired: false,
+      templateUrl: 'views/resource-fail.html',
+      controller: 'ResourceFailCtrl'
+    })
+    .when('/resource-pvpfail', {
+      authRequired: false,
+      templateUrl: 'views/resource-pvpfail.html',
+      controller: 'ResourcePvpFailCtrl'
+    })
+    .when('/resource-win', {
+      authRequired: false,
+      templateUrl: 'views/resource-win.html',
+      controller: 'ResourceWinCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
