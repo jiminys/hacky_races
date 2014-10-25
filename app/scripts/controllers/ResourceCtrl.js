@@ -1,11 +1,7 @@
 'use strict';
 
-function ResourceCtrl($scope) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
+function ResourceCtrl($scope, ResourceFactory) {
+    $scope.resource = ResourceFactory.getResource();
 }
 
 angular.module('hackyRacesApp')

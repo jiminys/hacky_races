@@ -1,47 +1,20 @@
 
 
-app.factory('ContestantsService', ['$firebase', function ($firebase) {
-    var ref = new Firebase('https://ng-leaderboard.firebaseio.com/contestants/');
-    var contestants = $firebase(ref);
 
-    contestants.$on('loaded', function(){
-        // console.log('contestants', contestants);
-    })
+/* @ngInject */
+function ResourceFactory($firebase) {
 
-    var getContestants = function() {
-        return contestants;
-    }
+    var ref = new Firebase('https://hacky-races.firebaseio.com/resources/');
+    var fire = $firebase(ref);
+    var resources = fire.$asArray();
 
-    var addContestant = function (contestant) {
-        contestants.$add(contestant);
+    var api = {
+        getResource: function (id) {
+            return resources.$getRecord('00837626-1765-4569-b458-f5ac821c3d47');
+        }
     };
+    return api;
+};
 
-    var updateContestant = function (id) {
-        contestants.$save(id);
-    };
-
-    var removeContestant = function (id) {
-        contestants.$remove(id);
-    };
-
-    return {
-        getContestants: getContestants,
-        addContestant: addContestant,
-        updateContestant: updateContestant,
-        removeContestant: removeContestant
-    }
-}]);
-
-function ResourceService($firebase){
-  var resourcesRef = new Firebase('https://hacky-races.firebaseio.com/resources');
-  var resources = $firebase(resourcesRef);
-  var api = {
-    getResource: function(id){
-
-    },
-    addResource: function(resource){},
-    saveResource: function(resource){},
-    removeResource: function(resource){},
-  };
-  return api;
-}
+angular.module('hackyRacesApp')
+    .factory('ResourceFactory', ResourceFactory);
