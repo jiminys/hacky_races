@@ -17,6 +17,10 @@ angular.module('hackyRacesApp', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/vehicle', {
+          templateUrl: 'views/vehicle.html',
+          controller: 'VehicleCtrl'
+      })
       .when('/login', {
         authRequired: false,
         templateUrl: 'views/login.html',

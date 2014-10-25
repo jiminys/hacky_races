@@ -5,11 +5,25 @@ function VehicleFactory() { //$firebase){
     var vehicles = {
         1: {
             'name': 'Micahs Mega Falafel',
-            'status': '20'
+            'status': '20',
+            'stat1' : 'stat1',
+            'stat2' : 'stat2',
+            'stat3' : 'stat3',
+            'description' : 'description',
+            'resources': [
+
+            ]
         },
         2: {
             'name': 'Falafel King',
-            'status': '30'
+            'status': '30',
+            'stat1' : 'stat1',
+            'stat2' : 'stat2',
+            'stat3' : 'stat3',
+            'description' : 'description',
+            'resources': [
+
+            ]
         }
     };
     // var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
@@ -26,7 +40,7 @@ function VehicleFactory() { //$firebase){
         },
         removeVehicle: function(vehicle) {
             delete vehicles[vehicle.id];
-        },
+        }
     };
     return api;
 }
