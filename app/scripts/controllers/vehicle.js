@@ -7,5 +7,5 @@ angular.module('hackyRacesApp')
       'AngularJS',
       'Karma'
     ];
-      $scope.vehicle =  VehicleFactory.get('id');
+      $scope.vehicle =  VehicleFactory.getVehicle('id');
   });

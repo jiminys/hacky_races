@@ -46,4 +46,4 @@ function VehicleFactory() { //$firebase){
 }
 
 angular.module('hackyRacesApp')
-    .controller('VehicleFactory', VehicleFactory);
+    .factory('VehicleFactory', VehicleFactory);
