@@ -8,7 +8,8 @@ angular.module('hackyRacesApp', [
   'firebase',
   'angularfire.firebase',
   'angularfire.login',
-  'simpleLoginTools'
+  'simpleLoginTools',
+  'ngMaterial'
 ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -17,7 +18,7 @@ angular.module('hackyRacesApp', [
         controller: 'MainCtrl'
       })
       .when('/login', {
-        authRequired: false, // if true, must log in before viewing this page
+        authRequired: false,
         templateUrl: 'views/login.html',
         controller: 'LoginController'
       })
