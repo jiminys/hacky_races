@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('hackyRacesApp')
-  .controller('ResourceCtrl', function ($scope) {
+function ResourceCtrl($scope) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
     ];
-  });
+}
+
+angular.module('hackyRacesApp')
+  .controller('ResourceCtrl', ResourceCtrl);

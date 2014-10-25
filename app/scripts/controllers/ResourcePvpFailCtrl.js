@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('hackyRacesApp')
-  .controller('ResourcePvpFailCtrl', function ($scope) {
+function ResourcePvpFailCtrl($scope) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
     ];
-  });
+}
+
+angular.module('hackyRacesApp')
+  .controller('ResourcePvpFailCtrl', ResourcePvpFailCtrl);
