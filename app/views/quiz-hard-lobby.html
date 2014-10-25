@@ -1,0 +1,31 @@
+<div layout="vertical" class="ng-scope'">
+  <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
+     <md-content>
+
+     <h2>Waiting for player to connect...</h2>
+
+     <hr />
+
+     <md-text-float label="Enter a player name..."  ng-model="challenger.name"  ></md-text-float>
+      <p><md-button class="md-button-raised md-button-colored">Challenge player</md-button></p>
+
+
+      <section>
+      <md-subheader class="md-subheader-colored">Player Waiting Lobby..</md-subheader>
+      <md-list layout="vertical">
+      <md-item>
+<!--         <md-item ng-repeat="message in messages"> -->
+          <md-item-content>
+            <div class="md-tile-content">
+              <h4>{{chat.username}}: {{chat.message}}</h4>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </section>
+    <!-- <md-text-float label="Enter a message..."  ng-bind="chat.currentmessage"  ></md-text-float> -->
+    <form ng-submit="console.log('foo')"><md-text-float label="Enter a message..." ng-model="chat.currentmessage" ></md-text-float></form>
+    <md-button class="md-button-raised md-button-colored" ng-click="submit()">Submit message</md-button>
+
+    </md-content>
+</div>

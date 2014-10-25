@@ -1,0 +1,47 @@
+<div layout="vertical" class="ng-scope'">
+  <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
+     <md-content>
+
+     <h2> You are challenging player: <p>{{challengerName}}</p></h2>
+
+      <h4>Time remaining:</h4>
+      <md-progress-linear mode="{{mode}}" value="{{timerValue}}"></md-progress-linear>
+
+     <h2>Question {{quiz.number}}</h2> 
+     <p>{{quiz.question}}</p> 
+     
+     <md-radio-group ng-model="data.group1">
+        <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
+        <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
+        <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
+    </md-radio-group>
+
+
+
+      <h2>Question {{quiz.number}}</h2> 
+      <p>{{quiz.question}}</p> 
+     
+      <md-radio-group ng-model="data.group2">
+        <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
+        <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
+        <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
+      </md-radio-group>
+
+
+
+     <h2>Question {{quiz.number}}</h2> 
+     <p>{{quiz.question}}</p> 
+     
+     <md-radio-group ng-model="data.group3">
+
+      <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
+      <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
+      <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
+
+    </md-radio-group>
+
+    <p><md-button class="md-button-raised md-button-colored">Submit these answers</md-button></p>
+
+
+    </md-content>
+</div>
