@@ -30,5 +30,6 @@ angular.module('hackyRacesApp')
       $scope.toggle = function (part) {
         part.active = !part.active;
       };
+        VehicleFactory.calculateUserPoints(v);
     });
   });

@@ -5,6 +5,7 @@ function VehicleFactory($firebase, $q, UserFactory) {
 
     var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
     var vehicles = $firebase(vehiclesRef).$asArray();
+    var totalPoints = 0;
 
     var api = {
         getVehicleForUser: function (user) {
@@ -136,6 +137,19 @@ function VehicleFactory($firebase, $q, UserFactory) {
         },
         removeVehicle: function (vehicle) {
             vehicles.$remove(vehicle.id);
+        },
+        calculateUserPoints: function (usersVehicle) {
+            var usersVehicleParts = usersVehicle.parts;
+            for(var pi in usersVehicleParts) {
+                var p = usersVehicleParts[pi];
+                var resources = p.resources;
+                for (var res in resources) {
+                    var r = resources[res];
+                    totalPoints = totalPoints + (r.pointsMultiplier * r.rating);
+                    console.log('Points ! ' + r.pointsMultiplier + ' ' + r.rating);
+                }
+            }
+            UserFactory.saveUserData('totalPoints', totalPoints);
         }
     };
     return api;

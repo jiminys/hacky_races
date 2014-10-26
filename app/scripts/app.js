@@ -64,6 +64,11 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/resource-win.html',
       controller: 'ResourceWinCtrl'
     })
+    .when('/teams', {
+      authRequired: true,
+      templateUrl: 'views/teams.html',
+      controller: 'TeamsCtrl'
+    })
     .otherwise({
       redirectTo: '/'
     });
