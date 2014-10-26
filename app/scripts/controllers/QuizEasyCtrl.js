@@ -1,7 +1,7 @@
 'use strict';
 
 /* @ngInject */
-function QuizEasyCtrl($scope, $routeParams, ResourceFactory) {
+function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
   $scope.resourceId = $routeParams.resourceId;
   ResourceFactory.getResource($routeParams.resourceId).then(function (resource) {
     $scope.resource = resource;
@@ -30,6 +30,7 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory) {
   };
   $scope.submit = function () {
     console.log('foo');
+    $location.url('resource-win');
   };
 }
 
