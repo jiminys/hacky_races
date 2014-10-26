@@ -29,7 +29,7 @@
                       <img ng-src="{{resource.thumbnail}}" class="thumbnail" alt="{{resource.name}}">
                   </div>
                   <div class="md-tile-content" layout="vertical">
-                    <h3>{{resource.name}} - lvl {{resource.level}}</h3>
+                    <md-subheading><h3>{{resource.name}} - lvl {{resource.level}}</h3></md-subheading>
                     status: {{resource.rating>0?'found':'not found'}}
                     foo: {{resource.value.title}}
                   </div>
