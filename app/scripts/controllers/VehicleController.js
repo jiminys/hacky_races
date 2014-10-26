@@ -29,7 +29,7 @@ angular.module('hackyRacesApp')
         return 0;
       };
       $scope.getPartImage = function (name) {
-        return 'img/parts/' + name + '-1-silhouette.png';
+        return 'img/parts/' + name + '-2-unlocked.png';
       };
       $scope.getResourceImage = function (id) {
         return 'img/resources/' + id + '.jpg';

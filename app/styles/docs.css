@@ -3561,7 +3561,7 @@ md-tooltip {
   box-shadow: 0px 27px 24px 0 rgba(0, 0, 0, 0.2); }
 
   .quiz {width:100%;}
-  h2, p {text-align: center;}
+  .quiz h2, .quiz p {text-align: center;}
 
 /*
 
