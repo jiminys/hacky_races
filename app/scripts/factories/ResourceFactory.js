@@ -6,8 +6,8 @@ function ResourceFactory($firebase, $q, FBURL) {
 
     var fb = new Firebase(FBURL);
 
-//    var ref = new Firebase('https://hacky-races.firebaseio.com/resources/');
-//    var fire = $firebase(ref);
+    var resourcesRef = new Firebase('https://hacky-races.firebaseio.com/resources');
+    var resources = $firebase(resourcesRef).$asArray();
 //    var resources = fire.$asArray();
     var loadingBitly;
 
@@ -19,10 +19,16 @@ function ResourceFactory($firebase, $q, FBURL) {
             });
             return loadingUser.promise;
         },
-        getBitly: function () {
+        getBitly: function (bitly) {
              loadingBitly = $q.defer();
-            fb.child('resources').child('0341884e-887f-410d-b65f-7e6e16968694').child('bitly').once('value', function (ss) {
-                loadingBitly.resolve(ss.val());
+
+
+            resources.$loaded().then(function (array) {
+                array.forEach(function (r) {
+                    if (r.bitly === bitly) {
+                        loadingBitly.resolve(r.uuid);
+                    }
+                });
             });
             return loadingBitly.promise;
         }

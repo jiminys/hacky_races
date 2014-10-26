@@ -46,17 +46,12 @@ angular.module('hackyRacesApp')
             });
         };
         $scope.closeDialog = function() {
-            for (var pi in $scope.vehicle.parts) {
-                var p = $scope.vehicle.parts[pi];
-                for (var ri in p.resources) {
-                    var r = p.resources[ri];
 
-                    ResourceFactory.getBitly().then(function(bitly){
-                        console.log(bitly + ' '+ $scope.bitLyUrl);
-                    });
 
-                }
-            }
+            ResourceFactory.getBitly($scope.bitLyUrl).then(function(uuid){
+                $location.url('/resource/' + uuid);
+                $mdDialog.hide();
+            });
         };
     });
   });
