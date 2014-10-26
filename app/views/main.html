@@ -1,12 +1,44 @@
 <div layout="vertical" class="ng-scope'">
   <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
-     <md-content>
+  	 <md-content>
 
-     <h2>Whoops, looks like you've missed the point...</h2>
-     <h3>Failed to unlock:</h3>
-     <p>{{resource.title}}</p>
+    <md-card>
+      <img src="/img/vehicle.png" class="md-card-image" alt="Vehicle">
+      <h2>My Car - <span class="vehicle-title">Level {{level}} - {{vechicle.name}}</span></h2>
+      	<ul>
+      		<li class="stat1">{{vehicle.stat1}}</li>
+      		<li class="stat2">{{vehicle.stat2}}</li>
+      		<li class="stat3">{{vehicle.stat3}}</li>
+      	</ul>
+   	 <p class="vehicle-description">
+        {{vehicle.description}}
+      </p>
+    </md-card>  
 
-    <md-button class="md-button-raised md-button-colored" ng-click="submit()">Darn, I'll keep trying..</md-button>
+<p><md-button class="md-button-raised md-button-colored">Scan a clue!</md-button></p>
+
+<section>
+    <md-subheader class="md-subheader-colored">{{vehiclePart.title}}</md-subheader>
+      <md-list layout="vertical">
+        
+        <md-item ng-repeat="resource in resources">
+          <md-item-content>
+            <div class="md-tile-left">
+                <img ng-src="{{resource.thumbnail}}" class="thumbnail" alt="{{resource.title}}">
+            </div>
+            <div class="md-tile-content">
+              <h3>{{resource.title}}</h3>
+              <h4>{{resource.progress}}</h4>
+              <p>
+                {{resource.description}}
+              </p>
+            </div>
+          </md-item-content>
+        </md-item>
+    </md-list>
+</section>
 
     </md-content>
 </div>
+
+
