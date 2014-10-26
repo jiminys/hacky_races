@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('hackyRacesApp')
-  .controller('VehicleCtrl', function ($scope, VehicleFactory, UserFactory, ResourceFactory) {
+  .controller('VehicleCtrl', function ($scope, VehicleFactory, UserFactory, ResourceFactory, $mdDialog, $location) {
+
+    $scope.bitLyUrl = null;
+
     UserFactory.getCurrentUser().then(function (user) {
       VehicleFactory.getVehicleForUser(user).then(function (v) {
         VehicleFactory.calculateUserPoints(v);
@@ -34,5 +37,26 @@ angular.module('hackyRacesApp')
       $scope.toggle = function (part) {
         part.active = !part.active;
       };
+        $scope.openDialog = function($event) {
+            $mdDialog.show({
+                targetEvent: $event,
+                controller: 'VehicleCtrl',
+                template:
+                    '<md-dialog> <div class="dialog-content"> <md-text-float label="Enter the bit.ly code here" ng-model="bitLyUrl"  > </md-text-float></div> <div><md-button class="md-button-raised md-button-colored" ng-click="closeDialog()">Submit Address</md-button></div> </md-dialog>'
+            });
+        };
+        $scope.closeDialog = function() {
+            for (var pi in $scope.vehicle.parts) {
+                var p = $scope.vehicle.parts[pi];
+                for (var ri in p.resources) {
+                    var r = p.resources[ri];
+
+                    ResourceFactory.getBitly().then(function(bitly){
+                        console.log(bitly + ' '+ $scope.bitLyUrl);
+                    });
+
+                }
+            }
+        };
     });
   });

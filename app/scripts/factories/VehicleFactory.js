@@ -154,7 +154,6 @@ function VehicleFactory($firebase, $q, UserFactory) {
                 for (var res in resources) {
                     var r = resources[res];
                     totalPoints += (r.pointsMultiplier * r.rating);
-                    console.log('Points ! ' + r.pointsMultiplier + ' ' + r.rating);
                 }
             }
             UserFactory.saveUserData('totalPoints', totalPoints);
