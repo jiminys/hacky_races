@@ -24,7 +24,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
-    .when('/quiz-easy', {
+    .when('/quiz-easy/:resourceId', {
       authRequired: false,
       templateUrl: 'views/quiz-easy.html',
       controller: 'QuizEasyCtrl'
@@ -44,12 +44,12 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/quiz-hard-lobby.html',
       controller: 'QuizHardLobbyCtrl'
     })
-    .when('/resource', {
+    .when('/resource/:resourceId', {
       authRequired: false,
       templateUrl: 'views/resource.html',
       controller: 'ResourceCtrl'
     })
-    .when('/resource-fail', {
+    .when('/resource-fail/:resourceId', {
       authRequired: false,
       templateUrl: 'views/resource-fail.html',
       controller: 'ResourceFailCtrl'
@@ -59,7 +59,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/resource-pvpfail.html',
       controller: 'ResourcePvpFailCtrl'
     })
-    .when('/resource-win', {
+    .when('/resource-win/:resourceId', {
       authRequired: false,
       templateUrl: 'views/resource-win.html',
       controller: 'ResourceWinCtrl'

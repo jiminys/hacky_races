@@ -2,12 +2,14 @@
 
 
 /* @ngInject */
-function ResourceWinCtrl($scope) {
-  $scope.awesomeThings = [
-    'HTML5 Boilerplate',
-    'AngularJS',
-    'Karma'
-  ];
+function ResourceWinCtrl($scope, ResourceFactory, $routeParams, $location) {
+    $scope.resourceId = $routeParams.resourceId;
+    ResourceFactory.getResource($scope.resourceId).then(function(resource){
+        $scope.resource = resource;
+    });
+    $scope.submit = function(){
+        $location.url("/");
+    }
 }
 
 angular.module('hackyRacesApp')

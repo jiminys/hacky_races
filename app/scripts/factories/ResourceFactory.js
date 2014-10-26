@@ -2,18 +2,26 @@
 
 
 /* @ngInject */
-function ResourceFactory($firebase) {
+function ResourceFactory($firebase, $q, FBURL) {
 
-    var ref = new Firebase('https://hacky-races.firebaseio.com/resources/');
-    var fire = $firebase(ref);
-    var resources = fire.$asArray();
+    var fb = new Firebase(FBURL);
+
+//    var ref = new Firebase('https://hacky-races.firebaseio.com/resources/');
+//    var fire = $firebase(ref);
+//    var resources = fire.$asArray();
+    var loadingUser = $q.defer();
 
     var api = {
         getResource: function (id) {
-            return resources.$getRecord('00837626-1765-4569-b458-f5ac821c3d47');
+            var loadingUser = $q.defer();
+            fb.child('resources').child(id).once('value', function (ss) {
+                loadingUser.resolve(ss.val());
+            });
+            return loadingUser.promise;
         }
     };
     return api;
+
 };
 
 angular.module('hackyRacesApp')
