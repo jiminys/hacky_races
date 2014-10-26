@@ -28,7 +28,11 @@ function UserFactory($firebaseSimpleLogin, FBURL, $q, $rootScope) {
             return fb.child('users').child(id);
         },
         getTotalPoints: function (id) {
-            return fb.child('users').child(id).child('totalPoints');
+            var defer = $q.defer();
+            fb.child('users').child(id).child('totalPoints').once('value', function (val) {
+                defer.resolve(val.val());
+            });
+            return defer.promise;
         },
         saveUserData: function (key, value) {
             this.getCurrentUser().then(function (user) {

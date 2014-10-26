@@ -1,11 +1,16 @@
 'use strict';
 
+
+var vehiclesRef = null;
+var vehicles = null;
+var totalPoints = 0;
+
 /* @ngInject */
 function VehicleFactory($firebase, $q, UserFactory) {
 
-    var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
-    var vehicles = $firebase(vehiclesRef).$asArray();
-    var totalPoints = 0;
+    vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
+    vehicles = $firebase(vehiclesRef).$asArray();
+    totalPoints = 0;
 
     var api = {
         getVehicleForUser: function (user) {
@@ -140,7 +145,7 @@ function VehicleFactory($firebase, $q, UserFactory) {
         },
         calculateUserPoints: function (usersVehicle) {
             var usersVehicleParts = usersVehicle.parts;
-            for(var pi in usersVehicleParts) {
+            for (var pi in usersVehicleParts) {
                 var p = usersVehicleParts[pi];
                 var resources = p.resources;
                 for (var res in resources) {
