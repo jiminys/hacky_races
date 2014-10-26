@@ -26,7 +26,7 @@
               <md-item ng-repeat="resource in part.resources">
                 <md-item-content layout="horizontal">
                   <div class="md-tile-left">
-                      <img ng-src="{{resource.thumbnail}}" class="thumbnail" alt="{{resource.name}}">
+                      <img ng-src="{{getResourceImage(resource.id)}}" class="thumbnail" alt="{{resource.name}}">
                   </div>
                   <div class="md-tile-content" layout="vertical">
                     <md-subheading><h3>{{resource.name}} - lvl {{resource.level}}</h3></md-subheading>

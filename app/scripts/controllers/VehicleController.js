@@ -25,8 +25,11 @@ angular.module('hackyRacesApp')
       $scope.getStage = function () {
         return 0;
       };
-      $scope.getImage = function (name) {
+      $scope.getPartImage = function (name) {
         return 'img/parts/' + name + '-1-silhouette.png';
+      };
+      $scope.getResourceImage = function (id) {
+        return 'img/resources/' + id + '.jpg';
       };
       $scope.toggle = function (part) {
         part.active = !part.active;
