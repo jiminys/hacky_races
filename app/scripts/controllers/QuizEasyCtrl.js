@@ -5,15 +5,16 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
   $scope.resourceId = $routeParams.resourceId;
   ResourceFactory.getResource($routeParams.resourceId).then(function (resource) {
     $scope.resource = resource;
-    $scope.quizzes = [{
-      'number': '1',
+    $scope.quizzes = [
+		resource.questions.easy
+	,
+	{
       'question': 'foo question',
       'answers': [
         'Answer 1', 'Answer 2', 'Answer 3'
       ],
       'answer': ''
     }, {
-      'number': '2',
       'question': 'foo question',
       'answers': [
         'Answer 1', 'Answer 2', 'Answer 3'
@@ -29,8 +30,18 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
     return !pending;
   };
   $scope.submit = function () {
-    console.log('foo');
-    $location.url('resource-win/' + $scope.resourceId);
+	var allAnswersCorrect = true;
+    $scope.quizzes.forEach(function (quiz) {
+		var thisAnswerCorrect = (quiz.correctAnswer === 1) || (quiz.answer === "Answer 1");
+		allAnswersCorrect = allAnswersCorrect && thisAnswerCorrect;
+	});
+	if (allAnswersCorrect) {
+		console.log("win!");
+		$location.url('resource-win/' + $scope.resourceId);
+	} else {
+		console.log("loes");
+		$location.url('resource-fail/' + $scope.resourceId);
+	}
   };
 }
 
