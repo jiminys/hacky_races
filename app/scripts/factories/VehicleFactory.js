@@ -20,16 +20,74 @@ function VehicleFactory($firebase, $q, UserFactory) {
                         'stage': 0,
                         'parts': {
                             'engine': {
-                                "level": 0
+                                "level": 0,
+								"resources": {
+									"piston": {
+										"rating": 0,
+										"pointsMultiplier": 40,
+										"level": 1
+									},
+									"combustion": {
+										"rating": 0,
+										"pointsMultiplier": 50,
+										"level": 1
+									},
+									"diesel": {
+										"rating": 0,
+										"pointsMultiplier": 80,
+										"level": 2
+									}
+								}
                             },
                             'wheels': {
-                                "level": 0
+                                "level": 0,
+								"resources": {
+									"chains": {
+										"rating": 0,
+										"pointsMultiplier": 50,
+										"level": 1
+									},
+									"axle": {
+										"rating": 0,
+										"pointsMultiplier": 100,
+										"level": 2
+									}
+								}
                             },
                             'body': {
-                                "level": 0
+                                "level": 0,
+								"resources": {
+									"windTunnel": {
+										"rating": 0,
+										"pointsMultiplier": 30,
+										"level": 1
+									},
+									"aerodynamics": {
+										"rating": 0,
+										"pointsMultiplier": 40,
+										"level": 1
+									},
+									"sleekDesign": {
+										"rating": 0,
+										"pointsMultiplier": 130,
+										"level": 2
+									}
+								}
                             },
                             'steering': {
-                                "level": 0
+                                "level": 0,
+								"resources": {
+									"steeringWheel": {
+										"rating": 0,
+										"pointsMultiplier": 60,
+										"level": 1
+									},
+									"transmission": {
+										"rating": 0,
+										"pointsMultiplier": 70,
+										"level": 2
+									}
+								}
                             }
                         }
                     };
