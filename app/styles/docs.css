@@ -4226,3 +4226,13 @@ md-toast {
   height: 24px; }
 
  .quizbg {background-color: #fff;}
+
+.bitlybg {
+  padding-bottom:40px !important ;
+ }
+
+ .bitly {
+  top: 85px;
+position: absolute;
+left: 13px;
+width: 90%;}

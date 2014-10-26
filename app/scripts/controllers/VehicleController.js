@@ -42,7 +42,7 @@ angular.module('hackyRacesApp')
                 targetEvent: $event,
                 controller: 'VehicleCtrl',
                 template:
-                    '<md-dialog> <div class="dialog-content"> <md-text-float label="Enter the bit.ly code here" ng-model="bitLyUrl"  > </md-text-float></div> <div><md-button class="md-button-raised md-button-colored" ng-click="closeDialog()">Submit Address</md-button></div> </md-dialog>'
+                    '<md-dialog> <div class="dialog-content bitlybg"> <md-text-float label="Enter the bit.ly code here" ng-model="bitLyUrl"  > </md-text-float></div> <div><md-button class="md-button-raised md-button-colored bitly" ng-click="closeDialog()">Submit Address</md-button></div> </md-dialog>'
             });
         };
         $scope.closeDialog = function() {
