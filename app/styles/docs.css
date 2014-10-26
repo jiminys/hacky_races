@@ -1568,6 +1568,13 @@ md-button {
     background-color: rgb(255, 48, 0);
   }
 
+  .scanthecode {
+    width: 100%;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
   md-button.md-button-fab {
     z-index: 2;
     width: 56px;
