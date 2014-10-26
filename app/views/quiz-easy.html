@@ -4,8 +4,8 @@
   <div ng-repeat="quiz in quizzes">
     <md-subheader>Question {{quiz.number}}</md-subheader>
     <p>{{quiz.question}}</p>
-    <md-radio-group ng-model="quiz.answer">
-    <md-radio-button ng-repeat="answer in quiz.answers" value="{{answer}}" aria-label="{{ answer }}">{{answer}}</md-radio-button>
+    <md-radio-group ng-model="quiz.selectedAnswer">
+    <md-radio-button ng-repeat="selectedAnswer in quiz.answers" value="{{selectedAnswer}}" aria-label="{{ selectedAnswer }}">{{selectedAnswer}}</md-radio-button>
     </md-radio-group>
   </div>
   <p><md-button class="md-button-raised md-button-colored" ng-disabled="pendingAnswers()" ng-click="submit()">Submit these answers</md-button></p>

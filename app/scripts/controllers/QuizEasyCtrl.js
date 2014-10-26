@@ -10,30 +10,38 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
 	,
 	{
       'question': 'foo question',
-      'answers': [
-        'Answer 1', 'Answer 2', 'Answer 3'
-      ],
-      'answer': ''
+      'answers': {
+        'Answer1':'Answer 1', 'Answer2':'Answer 2', 'Answer3':'Answer 3'
+      },
+      'selectedAnswer': '',
+	  'correctAnswer': 1
     }, {
       'question': 'foo question',
-      'answers': [
-        'Answer 1', 'Answer 2', 'Answer 3'
-      ],
-      'answer': ''
+      'answers': {
+        'Answer1':'Answer 1', 'Answer2':'Answer 2', 'Answer3':'Answer 3'
+      },
+      'selectedAnswer': '',
+	  'correctAnswer': 1
     }];
   });
   $scope.pendingAnswers = function () {
     var pending = true;
     $scope.quizzes.forEach(function (quiz) {
-      pending = pending && quiz.answer.length;
+      pending = pending && quiz.selectedAnswer.length;
     });
     return !pending;
   };
   $scope.submit = function () {
 	var allAnswersCorrect = true;
     $scope.quizzes.forEach(function (quiz) {
-		var thisAnswerCorrect = (quiz.correctAnswer === 1) || (quiz.answer === "Answer 1");
+		console.log("Start");
+		console.log(quiz.answers.Answer1);
+		console.log(quiz.selectedAnswer);
+		console.log((quiz.answers.Answer1 == quiz.selectedAnswer));
+		var thisAnswerCorrect = (quiz.answers.Answer1 == quiz.selectedAnswer);
 		allAnswersCorrect = allAnswersCorrect && thisAnswerCorrect;
+		console.log("thisAnswerCorrect: " + thisAnswerCorrect);
+		console.log("allAnswersCorrect: " + allAnswersCorrect);
 	});
 	if (allAnswersCorrect) {
 		console.log("win!");
