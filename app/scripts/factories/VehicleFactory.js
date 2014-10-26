@@ -22,7 +22,7 @@ function VehicleFactory($firebase, $q, UserFactory) {
                             'engine': {
                                 'id': 'C41C1A27-5550-4003-8E58-A7ABFF8EB045',
                                 'name': 'Engine',
-                                'level': 0,
+                                'level': 50,
                                 'resources': {
                                     'piston': {
                                         'name': 'Piston',
