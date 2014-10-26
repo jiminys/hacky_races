@@ -7,28 +7,15 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
     $scope.resource = resource;
     $scope.quizzes = [
 		resource.questions.easy
-	,
-	{
-      'question': 'foo question',
-      'answers': {
-        'Answer1':'Answer 1', 'Answer2':'Answer 2', 'Answer3':'Answer 3'
-      },
-      'selectedAnswer': '',
-	  'correctAnswer': 1
-    }, {
-      'question': 'foo question',
-      'answers': {
-        'Answer1':'Answer 1', 'Answer2':'Answer 2', 'Answer3':'Answer 3'
-      },
-      'selectedAnswer': '',
-	  'correctAnswer': 1
-    }];
+	];
   });
   $scope.pendingAnswers = function () {
     var pending = true;
+	if(
+	$scope.quizzes) {
     $scope.quizzes.forEach(function (quiz) {
       pending = pending && quiz.selectedAnswer.length;
-    });
+    });}
     return !pending;
   };
   $scope.submit = function () {
