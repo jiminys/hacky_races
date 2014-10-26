@@ -24,7 +24,7 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
-    .when('/quiz-easy', {
+    .when('/quiz-easy/:resourceId', {
       authRequired: false,
       templateUrl: 'views/quiz-easy.html',
       controller: 'QuizEasyCtrl'

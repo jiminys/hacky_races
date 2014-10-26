@@ -1,42 +1,12 @@
 <div layout="vertical" class="ng-scope'">
   <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
-     <md-content>
-
-     <h2>Question {{quiz.number}}</h2> 
-     <p>{{quiz.question}}</p> 
-     
-     <md-radio-group ng-model="data.group1">
-        <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
-        <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
-        <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
+  <div ng-repeat="quiz in quizzes">
+    <md-subheader>Question {{quiz.number}}</md-subheader>
+    <p>{{quiz.question}}</p>
+    <md-radio-group ng-model="quiz.answer">
+    <md-radio-button ng-repeat="answer in quiz.answers" value="{{answer}}" aria-label="{{ answer }}">{{answer}}</md-radio-button>
     </md-radio-group>
-
-
-
-      <h2>Question {{quiz.number}}</h2> 
-      <p>{{quiz.question}}</p> 
-     
-      <md-radio-group ng-model="data.group2">
-        <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
-        <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
-        <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
-      </md-radio-group>
-
-
-
-     <h2>Question {{quiz.number}}</h2> 
-     <p>{{quiz.question}}</p> 
-     
-     <md-radio-group ng-model="data.group3">
-
-      <md-radio-button value="{{quiz.answer1}}" aria-label="Label 1">{{quiz.answer1}}</md-radio-button>
-      <md-radio-button value="{{quiz.answer2}}" noink>{{quiz.answer2}}</md-radio-button>
-      <md-radio-button value="{{quiz.answer3}}" aria-label="Label 3">{{quiz.answer3}}</md-radio-button>
-
-    </md-radio-group>
-
-    <p><md-button class="md-button-raised md-button-colored">Submit these answers</md-button></p>
-
-
-    </md-content>
+  </div>
+  <p><md-button class="md-button-raised md-button-colored" ng-disabled="pendingAnswers()" ng-click="submit()">Submit these answers</md-button></p>
+  </md-content>
 </div>
