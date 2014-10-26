@@ -27,6 +27,9 @@ function UserFactory($firebaseSimpleLogin, FBURL, $q, $rootScope) {
         getUser: function (id) {
             return fb.child('users').child(id);
         },
+        getTotalPoints: function (id) {
+            return fb.child('users').child(id).child('totalPoints');
+        },
         saveUserData: function (key, value) {
             this.getCurrentUser().then(function (user) {
                 fb.child('users').child(user.uid).child(key).set(value);

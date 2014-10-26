@@ -1,0 +1,20 @@
+<div layout="vertical" class="ng-scope'">
+    <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
+        <md-content>
+
+            <md-card>
+                <h2>Teams</h2>
+                <h2>Create Team</h2>
+                <md-text-float label="Team Name" ng-model="createTeamName"  > </md-text-float>
+                <md-button class="md-button-raised md-button-colored" ng-click="createTeam()">Create Team</md-button></p>
+                <md-divider ng-if="!$last"></md-divider>
+                <h2>Retrieve Team</h2>
+                <md-text-float label="Team Name" ng-model="retrieveTeamName"  > </md-text-float>
+                <md-button class="md-button-raised md-button-colored" ng-click="retrieveTeam()">Retrieve Team</md-button></p>
+                <md-divider ng-if="!$last"></md-divider>
+            </md-card>
+
+        </md-content>
+</div>
+
+
