@@ -142,6 +142,9 @@ function VehicleFactory($firebase, $q, UserFactory) {
         removeVehicle: function (vehicle) {
             vehicles.$remove(vehicle.id);
         },
+		saveVehicle: function (vehicle) {
+            vehicles.$save(vehicle);
+        },
         calculateUserPoints: function (usersVehicle) {
             var totalPoints = 0;
             var usersVehicleParts = usersVehicle.parts;
