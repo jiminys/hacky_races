@@ -1,16 +1,10 @@
 'use strict';
 
-
-var vehiclesRef = null;
-var vehicles = null;
-var totalPoints = 0;
-
 /* @ngInject */
 function VehicleFactory($firebase, $q, UserFactory) {
 
-    vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
-    vehicles = $firebase(vehiclesRef).$asArray();
-    totalPoints = 0;
+    var vehiclesRef = new Firebase('https://hacky-races.firebaseio.com/vehicles');
+    var vehicles = $firebase(vehiclesRef).$asArray();
 
     var api = {
         getVehicleForUser: function (user) {
@@ -18,8 +12,13 @@ function VehicleFactory($firebase, $q, UserFactory) {
             UserFactory.getUser(user.uid).child('vehicleId').once('value', function (v) {
                 if (v.val()) {
                     var vId = v.val();
-                    var vehicle = vehicles.$getRecord(vId);
-                    deferred.resolve(vehicle);
+                    vehicles.$loaded().then(function (array) {
+                        array.forEach(function (v) {
+                            if (v.$id === vId) {
+                                deferred.resolve(v);
+                            }
+                        });
+                    });
                 } else {
                     var vehicle = {
                         'name': '',
@@ -144,13 +143,14 @@ function VehicleFactory($firebase, $q, UserFactory) {
             vehicles.$remove(vehicle.id);
         },
         calculateUserPoints: function (usersVehicle) {
+            var totalPoints = 0;
             var usersVehicleParts = usersVehicle.parts;
             for (var pi in usersVehicleParts) {
                 var p = usersVehicleParts[pi];
                 var resources = p.resources;
                 for (var res in resources) {
                     var r = resources[res];
-                    totalPoints = totalPoints + (r.pointsMultiplier * r.rating);
+                    totalPoints += (r.pointsMultiplier * r.rating);
                     console.log('Points ! ' + r.pointsMultiplier + ' ' + r.rating);
                 }
             }

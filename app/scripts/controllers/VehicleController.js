@@ -4,7 +4,7 @@ angular.module('hackyRacesApp')
   .controller('VehicleCtrl', function ($scope, VehicleFactory, UserFactory, ResourceFactory) {
     UserFactory.getCurrentUser().then(function (user) {
       VehicleFactory.getVehicleForUser(user).then(function (v) {
-        // VehicleFactory.calculateUserPoints(v);
+        VehicleFactory.calculateUserPoints(v);
         $scope.vehicle = v;
         for (var pi in v.parts) {
           var p = v.parts[pi];
