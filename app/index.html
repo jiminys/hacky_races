@@ -26,6 +26,7 @@
     <h1 class="md-toolbar-tools">
     <a href="#/" tabindex="0">hacky races</a>
     </h1>
+        <md-button class="md-button-raised" ng-click="logout()">Logout</md-button>
     </md-toolbar>
     </md-sidenav>
     <div layout="vertical" layout-fill="" tabindex="-1" role="main">
@@ -36,8 +37,7 @@
         </button>
         <h2 flex="" class="ng-binding">hacky races</h2>
         <md-content layout="horizontal" ng-show="isLoggedIn" layout-align="right">
-        {{displayName}}
-        <md-button class="md-button-raised" ng-click="logout()">Logout</md-button>
+        {{displayName}} {{score}}
         </md-content>
       </div>
       </md-toolbar>
