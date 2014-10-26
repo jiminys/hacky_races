@@ -34,20 +34,12 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
   $scope.submit = function () {
 	var allAnswersCorrect = true;
     $scope.quizzes.forEach(function (quiz) {
-		console.log("Start");
-		console.log(quiz.answers.Answer1);
-		console.log(quiz.selectedAnswer);
-		console.log((quiz.answers.Answer1 == quiz.selectedAnswer));
 		var thisAnswerCorrect = (quiz.answers.Answer1 == quiz.selectedAnswer);
 		allAnswersCorrect = allAnswersCorrect && thisAnswerCorrect;
-		console.log("thisAnswerCorrect: " + thisAnswerCorrect);
-		console.log("allAnswersCorrect: " + allAnswersCorrect);
 	});
 	if (allAnswersCorrect) {
-		console.log("win!");
 		$location.url('resource-win/' + $scope.resourceId);
 	} else {
-		console.log("loes");
 		$location.url('resource-fail/' + $scope.resourceId);
 	}
   };
