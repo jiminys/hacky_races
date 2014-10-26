@@ -14,53 +14,53 @@ var app = angular.module('hackyRacesApp', [
 
 app.config(function ($routeProvider) {
   $routeProvider
-    .when('/', {
-      authRequired: true,
-      templateUrl: 'views/vehicle.html',
-      controller: 'VehicleCtrl'
-    })
     .when('/login', {
       authRequired: false,
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
+    .when('/', {
+      authRequired: true,
+      templateUrl: 'views/vehicle.html',
+      controller: 'VehicleCtrl'
+    })
     .when('/quiz-easy/:resourceId', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/quiz-easy.html',
       controller: 'QuizEasyCtrl'
     })
     .when('/quiz-medium', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/quiz-medium.html',
       controller: 'QuizMediumCtrl'
     })
     .when('/quiz-hard', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/quiz-hard.html',
       controller: 'QuizHardCtrl'
     })
     .when('/quiz-hard-lobby', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/quiz-hard-lobby.html',
       controller: 'QuizHardLobbyCtrl'
     })
     .when('/resource/:resourceId', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/resource.html',
       controller: 'ResourceCtrl'
     })
     .when('/resource-fail/:resourceId', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/resource-fail.html',
       controller: 'ResourceFailCtrl'
     })
     .when('/resource-pvpfail', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/resource-pvpfail.html',
       controller: 'ResourcePvpFailCtrl'
     })
     .when('/resource-win/:resourceId', {
-      authRequired: false,
+      authRequired: true,
       templateUrl: 'views/resource-win.html',
       controller: 'ResourceWinCtrl'
     })

@@ -7,4 +7,13 @@ angular.module('hackyRacesApp')
         $scope.vehicle = v;
       });
     });
+    $scope.getVehicleName = function () {
+      return 'name';
+    };
+    $scope.getStage = function () {
+      return 0;
+    };
+    $scope.getImage = function () {
+      return 'url';
+    };
   });

@@ -1,43 +1,32 @@
 <div layout="vertical" class="ng-scope'">
   <md-content flex="" class="md-content-padding ng-scope" layout="vertical">
   	 <md-content>
-
-    <md-card>
-      <img src="/img/vehicle.png" class="md-card-image" alt="Vehicle">
-      <h2>My Car - <span class="vehicle-title">Level {{vehicle.level}} - {{vehicle.name}}</span></h2>
-      	<ul>
-      		<li class="stat1">{{vehicle.stat1}}</li>
-      		<li class="stat2">{{vehicle.stat2}}</li>
-      		<li class="stat3">{{vehicle.stat3}}</li>
-      	</ul>
-   	 <p class="vehicle-description">
-        {{vehicle.description}}
-      </p>
-    </md-card>  
-
-<p><md-button class="md-button-raised md-button-colored">Scan a clue!</md-button></p>
-
-<section>
-    <md-subheader class="md-subheader-colored">{{vehiclePart.title}}</md-subheader>
-      <md-list layout="vertical">
-        
-        <md-item ng-repeat="resource in resources">
-          <md-item-content>
-            <div class="md-tile-left">
-                <img ng-src="{{resource.thumbnail}}" class="thumbnail" alt="{{resource.title}}">
-            </div>
-            <div class="md-tile-content">
-              <h3>{{resource.title}}</h3>
-              <h4>{{resource.progress}}</h4>
-              <p>
-                {{resource.description}}
-              </p>
-            </div>
-          </md-item-content>
-        </md-item>
-    </md-list>
-</section>
-
+      <md-card>
+        <h2>My Car</h2>
+        <img src="/img/vehicle.png" class="md-card-image" alt="Vehicle">
+        <section>
+          <md-button class="md-button-raised md-button-colored" tabindex="-1"><button class="md-button-inner">Add Resource</button><div class="md-ripple-container"></div></md-button>
+        </section>
+        <md-subheading>Stage {{getStage()}} - {{getVehicleName()}}</md-subheading>
+        <section>
+        <md-list layout="vertical">
+          <md-item ng-repeat="part in vehicle.parts">
+            <md-item-content>
+              <div class="md-tile-left">
+                  <img ng-src="{{part.thumbnail}}" class="thumbnail" alt="{{part.title}}">
+              </div>
+              <div class="md-tile-content">
+                <h3>{{part.name}}</h3>
+                <md-progress-linear mode="determinate" ng-value="part.progress" ></md-progress-linear>
+                <p>
+                  {{part.description}}
+                </p>
+              </div>
+            </md-item-content>
+          </md-item>
+      </md-list>
+      </section>
+      </md-card>
     </md-content>
 </div>
 
