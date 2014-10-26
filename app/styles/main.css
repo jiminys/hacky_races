@@ -35,6 +35,9 @@ img {
   width:100%;
   padding:10px;
 }
+.thumbnail {
+  width:100px;
+}
 
 /* Customize container */
 

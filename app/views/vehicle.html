@@ -19,14 +19,14 @@
                   <img ng-src="{{getPartImage(part.name)}}" class="thumbnail" alt="{{part.name}}">
               </div>
               <div class="md-tile-content" layout="vertical">
-                <h2>{{part.name}}</h2>
+                <h2><span class="partname">{{part.name}}</span></h2>
                 <md-progress-linear mode="determinate" ng-value="part.level" ></md-progress-linear>
-                <md-button class="md-button-raised"><button class="md-button-inner" ng-click="toggle(part)">Tap for components</button></md-button>
+                <md-button class="md-button-raised"><button class="md-button-inner comps" ng-click="toggle(part)">Tap for components</button></md-button>
               </div>
             </md-item-content>
             <div class="md-tile-content" layout="vertical" ng-show="part.active">
               <md-item ng-repeat="resource in part.resources">
-                <md-item-content layout="horizontal">
+                <md-item-content class="resourcethumb" layout="horizontal">
                   <div class="md-tile-left">
                       <img ng-src="{{getResourceImage(resource.id)}}" class="thumbnail" alt="{{resource.name}}">
                   </div>
