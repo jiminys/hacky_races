@@ -30,7 +30,7 @@ function QuizEasyCtrl($scope, $routeParams, ResourceFactory, $location) {
   };
   $scope.submit = function () {
     console.log('foo');
-    $location.url('resource-win');
+    $location.url('resource-win/' + $scope.resourceId);
   };
 }
 
